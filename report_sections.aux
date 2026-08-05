@@ -1,0 +1,299 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{cheng2010survey,xian2018survey}
+\citation{xian2018survey,aldhabyani2020busi}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{1}{Introduction}{section.1}{}}
+\citation{aldhabyani2020busi}
+\citation{cheng2010survey}
+\citation{xian2018survey}
+\citation{aldhabyani2020busi}
+\citation{aldhabyani2019augmentation}
+\citation{pawlowska2023}
+\@writefile{toc}{\contentsline {paragraph}{Problem statement.}{2}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Research questions.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Contributions.}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Report organisation.}{2}{section*.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Literature Review}{2}{section.2}\protected@file@percent }
+\newlabel{sec:litreview}{{2}{2}{Literature Review}{section.2}{}}
+\citation{he2016resnet}
+\citation{huang2017densenet}
+\citation{tan2019efficientnet}
+\citation{latha2024effnetb7}
+\citation{selvaraju2017gradcam}
+\citation{ronneberger2015unet}
+\citation{zhou2018unetpp}
+\citation{huang2020unet3plus}
+\citation{yap2018cnn}
+\citation{oktay2018attentionunet}
+\citation{chen2018deeplabv3plus}
+\citation{chen2021transunet}
+\citation{chen2023aaunet}
+\citation{derakhshandeh2024cresunet}
+\citation{isensee2021nnunet}
+\citation{kirillov2023sam}
+\citation{ma2024medsam}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Breast-ultrasound CAD and the BUSI dataset}{3}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}CNN-based classification}{3}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}U-Net-based segmentation}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Attention and multi-scale segmentation}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Transfer learning and self-configuring pipelines}{3}{subsection.2.5}\protected@file@percent }
+\citation{bruno2025dualstage}
+\citation{lu2025multitask}
+\citation{aldhabyani2020busi}
+\citation{yap2018cnn}
+\citation{ronneberger2015unet}
+\citation{chen2018deeplabv3plus}
+\citation{oktay2018attentionunet}
+\citation{chen2023aaunet}
+\citation{derakhshandeh2024cresunet}
+\citation{isensee2021nnunet}
+\citation{he2016resnet}
+\citation{huang2017densenet}
+\citation{tan2019efficientnet}
+\citation{bruno2025dualstage}
+\citation{lu2025multitask}
+\citation{aldhabyani2020busi}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.6}Joint and dual-stage segmentation--classification}{4}{subsection.2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.7}Evaluation weaknesses in small medical-imaging datasets}{4}{subsection.2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.8}Research gaps and project motivation}{4}{subsection.2.8}\protected@file@percent }
+\newlabel{sec:gaps}{{2.8}{4}{Research gaps and project motivation}{subsection.2.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Dataset and Exploratory Data Analysis}{4}{section.3}\protected@file@percent }
+\newlabel{sec:eda}{{3}{4}{Dataset and Exploratory Data Analysis}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset composition}{4}{subsection.3.1}\protected@file@percent }
+\newlabel{sec:eda-comp}{{3.1}{4}{Dataset composition}{subsection.3.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparative summary of the most relevant prior work. ``Reported result'' lists a paper-stated BUSI number where available to us; ``n/r'' = not reported (to us). Values are as stated by the cited works, not re-measured here.}}{5}{table.caption.5}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:litcompare}{{1}{5}{Comparative summary of the most relevant prior work. ``Reported result'' lists a paper-stated BUSI number where available to us; ``n/r'' = not reported (to us). Values are as stated by the cited works, not re-measured here}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Class imbalance}{5}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:eda-imb}{{3.2}{5}{Class imbalance}{subsection.3.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces BUSI overview (computed in the notebook). ``Images with a real lesion'' excludes \texttt  {normal} scans, whose masks are empty.}}{6}{table.caption.6}\protected@file@percent }
+\newlabel{tab:overview}{{2}{6}{BUSI overview (computed in the notebook). ``Images with a real lesion'' excludes \texttt {normal} scans, whose masks are empty}{table.caption.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Class distribution of BUSI ($n=780$). The dataset is imbalanced (benign:malignant:normal $\approx 3.3:1.6:1$), which drives our use of class weighting and macro-averaged metrics rather than raw accuracy.}}{6}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:classdist}{{1}{6}{Class distribution of BUSI ($n=780$). The dataset is imbalanced (benign:malignant:normal $\approx 3.3:1.6:1$), which drives our use of class weighting and macro-averaged metrics rather than raw accuracy}{figure.caption.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Image dimensions, channels and intensity}{6}{subsection.3.3}\protected@file@percent }
+\newlabel{sec:eda-img}{{3.3}{6}{Image dimensions, channels and intensity}{subsection.3.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Lesion size, location and morphology}{6}{subsection.3.4}\protected@file@percent }
+\newlabel{sec:eda-shape}{{3.4}{6}{Lesion size, location and morphology}{subsection.3.4}{}}
+\citation{pawlowska2023}
+\newlabel{fig:imgsize}{{2a}{7}{Image dimensions / aspect ratio}{figure.caption.8}{}}
+\newlabel{sub@fig:imgsize}{{a}{7}{Image dimensions / aspect ratio}{figure.caption.8}{}}
+\newlabel{fig:intensity}{{2b}{7}{Per-class pixel-intensity / contrast}{figure.caption.8}{}}
+\newlabel{sub@fig:intensity}{{b}{7}{Per-class pixel-intensity / contrast}{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Image properties. (a)~Sizes are inconsistent and mostly landscape, motivating letterbox resizing to a fixed $256\times 256$. (b)~Brightness and contrast overlap across classes, so intensity alone is a weak feature and per-image normalisation is used.}}{7}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:imgprops}{{2}{7}{Image properties. (a)~Sizes are inconsistent and mostly landscape, motivating letterbox resizing to a fixed $256\times 256$. (b)~Brightness and contrast overlap across classes, so intensity alone is a weak feature and per-image normalisation is used}{figure.caption.8}{}}
+\newlabel{fig:area}{{3a}{7}{Lesion-area ratio by class}{figure.caption.9}{}}
+\newlabel{sub@fig:area}{{a}{7}{Lesion-area ratio by class}{figure.caption.9}{}}
+\newlabel{fig:shape}{{3b}{7}{Lesion shape descriptors by class}{figure.caption.9}{}}
+\newlabel{sub@fig:shape}{{b}{7}{Lesion shape descriptors by class}{figure.caption.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Lesion morphology. (a)~Malignant lesions are larger (median $\approx 12\%$ vs.\ $\approx 4\%$ of the image); many benign lesions are tiny. (b)~Malignant lesions are less circular/solid and more eccentric, i.e.\ more irregular. Both findings inform loss choice, model choice and the shape-feature experiment.}}{7}{figure.caption.9}\protected@file@percent }
+\newlabel{fig:morph}{{3}{7}{Lesion morphology. (a)~Malignant lesions are larger (median $\approx 12\%$ vs.\ $\approx 4\%$ of the image); many benign lesions are tiny. (b)~Malignant lesions are less circular/solid and more eccentric, i.e.\ more irregular. Both findings inform loss choice, model choice and the shape-feature experiment}{figure.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Duplicate images, label conflicts and leakage risk}{7}{subsection.3.5}\protected@file@percent }
+\newlabel{sec:eda-dup}{{3.5}{7}{Duplicate images, label conflicts and leakage risk}{subsection.3.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Aligned per-class lesion-location heatmaps. Lesions concentrate near the image centre (an acquisition bias); \texttt  {normal} has no lesion signal. This motivates translation/crop augmentation so the model does not simply exploit lesion position.}}{8}{figure.caption.10}\protected@file@percent }
+\newlabel{fig:location}{{4}{8}{Aligned per-class lesion-location heatmaps. Lesions concentrate near the image centre (an acquisition bias); \texttt {normal} has no lesion signal. This motivates translation/crop augmentation so the model does not simply exploit lesion position}{figure.caption.10}{}}
+\newlabel{fig:dup}{{5a}{8}{Near-duplicate detection (pHash)}{figure.caption.11}{}}
+\newlabel{sub@fig:dup}{{a}{8}{Near-duplicate detection (pHash)}{figure.caption.11}{}}
+\newlabel{fig:leakage}{{5b}{8}{Leakage under random splitting}{figure.caption.11}{}}
+\newlabel{sub@fig:leakage}{{b}{8}{Leakage under random splitting}{figure.caption.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Data-quality analysis. (a)~$186$ near-duplicate pairs ($10$ cross-class) form $124$ clusters covering $36\%$ of BUSI, including an exact cross-class duplicate. (b)~Simulated random $70/30$ splits leak dozens of clusters across train/test (mean on the order of tens of clusters), motivating a cluster-grouped split. Panel~(b) shows one $40$-run simulation.}}{8}{figure.caption.11}\protected@file@percent }
+\newlabel{fig:quality}{{5}{8}{Data-quality analysis. (a)~$186$ near-duplicate pairs ($10$ cross-class) form $124$ clusters covering $36\%$ of BUSI, including an exact cross-class duplicate. (b)~Simulated random $70/30$ splits leak dozens of clusters across train/test (mean on the order of tens of clusters), motivating a cluster-grouped split. Panel~(b) shows one $40$-run simulation}{figure.caption.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.6}Pre-processing decisions}{8}{subsection.3.6}\protected@file@percent }
+\newlabel{sec:eda-pre}{{3.6}{8}{Pre-processing decisions}{subsection.3.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Cleaning and grouping summary (from the notebook's data-quality analysis).}}{9}{table.caption.12}\protected@file@percent }
+\newlabel{tab:cleaning}{{3}{9}{Cleaning and grouping summary (from the notebook's data-quality analysis)}{table.caption.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Pre-processing decisions and their EDA justification.}}{9}{table.caption.13}\protected@file@percent }
+\newlabel{tab:preproc}{{4}{9}{Pre-processing decisions and their EDA justification}{table.caption.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.7}EDA implications for model design}{9}{subsection.3.7}\protected@file@percent }
+\newlabel{sec:eda-implications}{{3.7}{9}{EDA implications for model design}{subsection.3.7}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces From EDA observation to modelling implication.}}{9}{table.caption.14}\protected@file@percent }
+\newlabel{tab:implications}{{5}{9}{From EDA observation to modelling implication}{table.caption.14}{}}
+\citation{ronneberger2015unet}
+\citation{oktay2018attentionunet}
+\citation{yap2018cnn}
+\citation{yap2018cnn}
+\citation{chen2018deeplabv3plus}
+\citation{isensee2021nnunet}
+\citation{chen2023aaunet}
+\citation{derakhshandeh2024cresunet}
+\citation{he2016resnet}
+\citation{huang2017densenet}
+\citation{tan2019efficientnet}
+\citation{bruno2025dualstage}
+\citation{lu2025multitask}
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Overview of all models. ``Origin'': R\,=\,reproduced published model, P\,=\,proposed by us. ``Backbone'': pretrained (PT) or from scratch (FS). Parameter counts are read from the result files.}}{10}{table.caption.15}\protected@file@percent }
+\newlabel{tab:modeloverview}{{6}{10}{Overview of all models. ``Origin'': R\,=\,reproduced published model, P\,=\,proposed by us. ``Backbone'': pretrained (PT) or from scratch (FS). Parameter counts are read from the result files}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Models and Methods}{10}{section.4}\protected@file@percent }
+\newlabel{sec:models}{{4}{10}{Models and Methods}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Loss functions and metrics}{10}{subsection.4.1}\protected@file@percent }
+\newlabel{sec:losses}{{4.1}{10}{Loss functions and metrics}{subsection.4.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{Binary cross-entropy (BCE).}{10}{section*.16}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Weighted multi-class cross-entropy.}{10}{section*.17}\protected@file@percent }
+\citation{salehi2017tversky,abraham2019focaltversky}
+\citation{abraham2019focaltversky}
+\citation{yap2018cnn}
+\citation{aldhabyani2020busi}
+\citation{yap2018cnn}
+\citation{ronneberger2015unet}
+\@writefile{toc}{\contentsline {paragraph}{Dice coefficient and Dice loss.}{11}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Intersection-over-Union (IoU/Jaccard).}{11}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Tversky index and Focal-Tversky loss.}{11}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Our combined segmentation loss.}{11}{section*.21}\protected@file@percent }
+\newlabel{eq:combo}{{7}{11}{Our combined segmentation loss}{equation.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{Classification metrics.}{11}{section*.22}\protected@file@percent }
+\citation{ronneberger2015unet}
+\citation{yap2018cnn}
+\citation{yap2018cnn}
+\citation{oktay2018attentionunet}
+\citation{chen2018deeplabv3plus}
+\citation{isensee2021nnunet}
+\citation{chen2023aaunet}
+\citation{derakhshandeh2024cresunet}
+\citation{he2016resnet}
+\citation{huang2017densenet}
+\citation{tan2019efficientnet}
+\citation{bruno2025dualstage}
+\citation{lu2025multitask}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Reproduction: the project's three required papers}{12}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:repro3}{{4.2}{12}{Reproduction: the project's three required papers}{subsection.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Additional segmentation models}{12}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:repro-seg}{{4.3}{12}{Additional segmentation models}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Classification models}{12}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:repro-cls}{{4.4}{12}{Classification models}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Combined segmentation--classification}{13}{subsection.4.5}\protected@file@percent }
+\newlabel{sec:combined}{{4.5}{13}{Combined segmentation--classification}{subsection.4.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.6}Our improved segmenter}{13}{subsection.4.6}\protected@file@percent }
+\newlabel{sec:improved-seg}{{4.6}{13}{Our improved segmenter}{subsection.4.6}{}}
+\citation{cheng2010survey,xian2018survey}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.7}Our improved dual-stage pipeline}{14}{subsection.4.7}\protected@file@percent }
+\newlabel{sec:improved-dual}{{4.7}{14}{Our improved dual-stage pipeline}{subsection.4.7}{}}
+\@writefile{toc}{\contentsline {paragraph}{On comparing the two headline numbers.}{14}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Experimental Setup}{14}{section.5}\protected@file@percent }
+\newlabel{sec:setup}{{5}{14}{Experimental Setup}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Data split and leakage prevention}{14}{subsection.5.1}\protected@file@percent }
+\newlabel{sec:setup-split}{{5.1}{14}{Data split and leakage prevention}{subsection.5.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Composition of the shared leakage-free split (from \texttt  {Models/common/split.csv} and \texttt  {split\_cls.csv}). ``Clusters'' counts near-duplicate clusters, the unit that is actually allocated; the last row is the leakage assertion.}}{15}{table.caption.24}\protected@file@percent }
+\newlabel{tab:split}{{7}{15}{Composition of the shared leakage-free split (from \texttt {Models/common/split.csv} and \texttt {split\_cls.csv}). ``Clusters'' counts near-duplicate clusters, the unit that is actually allocated; the last row is the leakage assertion}{table.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Training configuration}{15}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:setup-train}{{5.2}{15}{Training configuration}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{Shared augmentation policy.}{15}{section*.25}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Shared training-time augmentation (\texttt  {Models/common/data.py}). Applied to the training split only; geometric transforms are applied jointly to image and mask for segmentation.}}{16}{table.caption.26}\protected@file@percent }
+\newlabel{tab:aug}{{8}{16}{Shared training-time augmentation (\texttt {Models/common/data.py}). Applied to the training split only; geometric transforms are applied jointly to image and mask for segmentation}{table.caption.26}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Training configuration per model (from the result JSON files). LR = initial learning rate; wCE = inverse-frequency weighted cross-entropy; DS = deep supervision. All inputs are $256\times 256$.}}{16}{table.caption.27}\protected@file@percent }
+\newlabel{tab:hparams}{{9}{16}{Training configuration per model (from the result JSON files). LR = initial learning rate; wCE = inverse-frequency weighted cross-entropy; DS = deep supervision. All inputs are $256\times 256$}{table.caption.27}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Hyper-parameter and threshold selection}{16}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:setup-hparam}{{5.3}{16}{Hyper-parameter and threshold selection}{subsection.5.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Evaluation metrics}{16}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:eval}{{5.4}{16}{Evaluation metrics}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Robustness and statistical evaluation}{17}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:setup-stats}{{5.5}{17}{Robustness and statistical evaluation}{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Implementation and reproducibility}{17}{subsection.5.6}\protected@file@percent }
+\newlabel{sec:setup-impl}{{5.6}{17}{Implementation and reproducibility}{subsection.5.6}{}}
+\citation{chen2018deeplabv3plus}
+\citation{chen2023aaunet}
+\citation{isensee2021nnunet}
+\citation{derakhshandeh2024cresunet}
+\citation{ronneberger2015unet}
+\citation{oktay2018attentionunet}
+\citation{lu2025multitask}
+\citation{yap2018cnn}
+\citation{yap2018cnn}
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces Training cost on the shared hardware (wall-clock minutes, from the result JSON files). Times exclude data caching, which is shared. The dual-stage rows train Stage-2 only; Stage-1 checkpoints are reused.}}{18}{table.caption.28}\protected@file@percent }
+\newlabel{tab:cost}{{10}{18}{Training cost on the shared hardware (wall-clock minutes, from the result JSON files). Times exclude data caching, which is shared. The dual-stage rows train Stage-2 only; Stage-1 checkpoints are reused}{table.caption.28}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Segmentation on the leakage-free BUSI test set (mean over $98$ images), ranked by Dice. ``$\sigma $'' is the per-image Dice standard deviation; Pix.\,P and Pix.\,R are pixel precision and recall. ``Paper'' is the paper-reported BUSI Dice where available to us. Best per column in bold.}}{18}{table.caption.29}\protected@file@percent }
+\newlabel{tab:seg}{{11}{18}{Segmentation on the leakage-free BUSI test set (mean over $98$ images), ranked by Dice. ``$\sigma $'' is the per-image Dice standard deviation; Pix.\,P and Pix.\,R are pixel precision and recall. ``Paper'' is the paper-reported BUSI Dice where available to us. Best per column in bold}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Results}{18}{section.6}\protected@file@percent }
+\newlabel{sec:results}{{6}{18}{Results}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Segmentation results}{18}{subsection.6.1}\protected@file@percent }
+\newlabel{sec:results-seg}{{6.1}{18}{Segmentation results}{subsection.6.1}{}}
+\citation{yap2018cnn}
+\citation{yap2018cnn}
+\citation{chen2018deeplabv3plus}
+\citation{yap2018cnn}
+\citation{isensee2021nnunet}
+\citation{ronneberger2015unet}
+\citation{derakhshandeh2024cresunet}
+\citation{chen2023aaunet}
+\citation{oktay2018attentionunet}
+\citation{yap2018cnn}
+\citation{lu2025multitask}
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Detection-style evaluation (Yap et al.~\cite  {yap2018cnn} criteria) of the same predictions, over $98$ test lesions. TPF = true-positive fraction (lesion recall at the region level); FP/img = false-positive regions per image.}}{19}{table.caption.30}\protected@file@percent }
+\newlabel{tab:seg-det}{{12}{19}{Detection-style evaluation (Yap et al.~\cite {yap2018cnn} criteria) of the same predictions, over $98$ test lesions. TPF = true-positive fraction (lesion recall at the region level); FP/img = false-positive regions per image}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {paragraph}{Ablation of the improved segmenter.}{19}{section*.32}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Segmentation Dice on the leakage-free test set. Our improved model (red) leads; the two BUS-specific SOTA reproductions (AAU-Net, CResU-Net) fall below their paper-reported Dice (diamonds) once near-duplicate leakage is removed.}}{20}{figure.caption.31}\protected@file@percent }
+\newlabel{fig:segbar}{{6}{20}{Segmentation Dice on the leakage-free test set. Our improved model (red) leads; the two BUS-specific SOTA reproductions (AAU-Net, CResU-Net) fall below their paper-reported Dice (diamonds) once near-duplicate leakage is removed}{figure.caption.31}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Controlled ablation of the improved segmenter (test set, $98$ images). Each row adds one component to the previous; everything else -- split, pre-processing, augmentation, $60$ epochs, AdamW with cosine schedule -- is held fixed. $\Delta $ is the change in Dice relative to the row above.}}{20}{table.caption.33}\protected@file@percent }
+\newlabel{tab:abl}{{13}{20}{Controlled ablation of the improved segmenter (test set, $98$ images). Each row adds one component to the previous; everything else -- split, pre-processing, augmentation, $60$ epochs, AdamW with cosine schedule -- is held fixed. $\Delta $ is the change in Dice relative to the row above}{table.caption.33}{}}
+\@writefile{toc}{\contentsline {paragraph}{Qualitative and failure analysis.}{20}{section*.34}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Classification results}{20}{subsection.6.2}\protected@file@percent }
+\newlabel{sec:results-cls}{{6.2}{20}{Classification results}{subsection.6.2}{}}
+\citation{tan2019efficientnet}
+\citation{he2016resnet}
+\citation{huang2017densenet}
+\citation{lu2025multitask}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Three-class classification on the leakage-free BUSI test set ($118$ images: $20$ normal, $67$ benign, $31$ malignant), ranked by macro-F1. Bal.\,acc.\ = balanced accuracy; AUC is macro one-vs-rest.}}{21}{table.caption.36}\protected@file@percent }
+\newlabel{tab:cls}{{14}{21}{Three-class classification on the leakage-free BUSI test set ($118$ images: $20$ normal, $67$ benign, $31$ malignant), ranked by macro-F1. Bal.\,acc.\^^M= balanced accuracy; AUC is macro one-vs-rest}{table.caption.36}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Per-class precision (P), recall (R) and F1 on the three-class test set. Support: normal $20$, benign $67$, malignant $31$. Malignant recall, the clinically critical quantity, is highlighted in the last column.}}{21}{table.caption.37}\protected@file@percent }
+\newlabel{tab:clsper}{{15}{21}{Per-class precision (P), recall (R) and F1 on the three-class test set. Support: normal $20$, benign $67$, malignant $31$. Malignant recall, the clinically critical quantity, is highlighted in the last column}{table.caption.37}{}}
+\citation{bruno2025dualstage}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Dual-stage results}{22}{subsection.6.3}\protected@file@percent }
+\newlabel{sec:results-dual}{{6.3}{22}{Dual-stage results}{subsection.6.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Error analysis}{22}{subsection.6.4}\protected@file@percent }
+\newlabel{sec:results-error}{{6.4}{22}{Error analysis}{subsection.6.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Dual-stage pipelines on the two-class ($98$-image) test set ($67$ benign, $31$ malignant). (a)~single-run ladder (one seed each; indicative only). (b)~rigorous evaluation with out-of-fold training masks, five-seed ensembling and a bootstrap $95\%$ CI. (c)~the individual seeds behind~(b). ``GT-ROI'' is the perfect-segmentation upper bound (the same Stage-2 fed ground-truth-mask crops); ``Gap'' is GT-ROI F1 minus pipeline F1, i.e.\ how much score is still lost to imperfect segmentation. ``Malig.\,R'' is malignant recall.}}{23}{table.caption.39}\protected@file@percent }
+\newlabel{tab:dual}{{16}{23}{Dual-stage pipelines on the two-class ($98$-image) test set ($67$ benign, $31$ malignant). (a)~single-run ladder (one seed each; indicative only). (b)~rigorous evaluation with out-of-fold training masks, five-seed ensembling and a bootstrap $95\%$ CI. (c)~the individual seeds behind~(b). ``GT-ROI'' is the perfect-segmentation upper bound (the same Stage-2 fed ground-truth-mask crops); ``Gap'' is GT-ROI F1 minus pipeline F1, i.e.\ how much score is still lost to imperfect segmentation. ``Malig.\,R'' is malignant recall}{table.caption.39}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.5}Summary of research-question answers}{23}{subsection.6.5}\protected@file@percent }
+\newlabel{sec:results-rq}{{6.5}{23}{Summary of research-question answers}{subsection.6.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{23}{section.7}\protected@file@percent }
+\newlabel{sec:discussion}{{7}{23}{Discussion}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Effect of evaluation hygiene}{23}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Why transfer learning helped}{24}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Why the dual-stage pipeline was classifier-bound}{24}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}Statistical uncertainty}{24}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.5}Clinical and practical interpretation}{24}{subsection.7.5}\protected@file@percent }
+\bibcite{aldhabyani2020busi}{1}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.6}Limitations and threats to validity}{25}{subsection.7.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.7}Future work}{25}{subsection.7.7}\protected@file@percent }
+\newlabel{sec:future}{{7.7}{25}{Future work}{subsection.7.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{25}{section.8}\protected@file@percent }
+\newlabel{sec:conclusion}{{8}{25}{Conclusion}{section.8}{}}
+\bibcite{yap2018cnn}{2}
+\bibcite{ronneberger2015unet}{3}
+\bibcite{he2016resnet}{4}
+\bibcite{huang2017densenet}{5}
+\bibcite{tan2019efficientnet}{6}
+\bibcite{chen2018deeplabv3plus}{7}
+\bibcite{zhou2018unetpp}{8}
+\bibcite{oktay2018attentionunet}{9}
+\bibcite{huang2020unet3plus}{10}
+\bibcite{chen2021transunet}{11}
+\bibcite{chen2023aaunet}{12}
+\bibcite{derakhshandeh2024cresunet}{13}
+\bibcite{latha2024effnetb7}{14}
+\bibcite{sulaiman2024attnbusi}{15}
+\bibcite{anari2025explainable}{16}
+\bibcite{bruno2025dualstage}{17}
+\bibcite{xian2018survey}{18}
+\bibcite{cheng2010survey}{19}
+\bibcite{isensee2021nnunet}{20}
+\bibcite{kirillov2023sam}{21}
+\bibcite{ma2024medsam}{22}
+\bibcite{selvaraju2017gradcam}{23}
+\bibcite{aldhabyani2019augmentation}{24}
+\bibcite{lu2025multitask}{25}
+\bibcite{salehi2017tversky}{26}
+\bibcite{abraham2019focaltversky}{27}
+\bibcite{pawlowska2023}{28}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Improved segmenter on test images (input, ground-truth mask, predicted overlay). Compact lesions are captured well; small low-contrast lesions and fuzzy malignant boundaries are the main failure modes.}}{28}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:segqual}{{7}{28}{Improved segmenter on test images (input, ground-truth mask, predicted overlay). Compact lesions are captured well; small low-contrast lesions and fuzzy malignant boundaries are the main failure modes}{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Confusion matrix of the best classifier (EfficientNet-B0, three-class test set). Most error involves the minority malignant class and the benign$\leftrightarrow $malignant boundary.}}{29}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:cls}{{8}{29}{Confusion matrix of the best classifier (EfficientNet-B0, three-class test set). Most error involves the minority malignant class and the benign$\leftrightarrow $malignant boundary}{figure.caption.38}{}}
+\newlabel{fig:dualci}{{9a}{29}{Feature variants: per-seed CI vs.\ ensemble}{figure.caption.40}{}}
+\newlabel{sub@fig:dualci}{{a}{29}{Feature variants: per-seed CI vs.\ ensemble}{figure.caption.40}{}}
+\newlabel{fig:dualpipe}{{9b}{29}{Pipeline on test images}{figure.caption.40}{}}
+\newlabel{sub@fig:dualpipe}{{b}{29}{Pipeline on test images}{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Improved dual-stage pipeline. (a)~The three feature variants' $95\%$ confidence intervals overlap almost entirely; only ensembling (stars) reliably lifts the per-seed mean (dots). (b)~Qualitative pipeline: input, ground-truth mask, Stage-1 predicted mask, and the ROI crop passed to Stage-2.}}{29}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:dual}{{9}{29}{Improved dual-stage pipeline. (a)~The three feature variants' $95\%$ confidence intervals overlap almost entirely; only ensembling (stars) reliably lifts the per-seed mean (dots). (b)~Qualitative pipeline: input, ground-truth mask, Stage-1 predicted mask, and the ROI crop passed to Stage-2}{figure.caption.40}{}}
+\gdef \@abspage@last{29}

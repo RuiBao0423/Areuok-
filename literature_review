@@ -1,0 +1,6 @@
+Because BUSI provides **both** image-level labels and pixel-level masks, it supports
+the full Project 047 scope. A related study by the same authors explores data
+augmentation for the same imagery [Al-Dhabyani 2019], which informs our augmentation
+choices.
+
+

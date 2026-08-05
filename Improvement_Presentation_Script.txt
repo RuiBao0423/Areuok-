@@ -1,0 +1,142 @@
+COMP9444 IMPROVEMENT SECTION — PRESENTATION SCRIPT
+Based on: COMP9444_Presentation_final.pptx
+Estimated speaking time: approximately 4–5 minutes
+
+Note: Text in square brackets is a speaking cue and should not be read aloud.
+
+
+SLIDE 17 — BASELINE COMBINED MODELS
+
+We first reproduced two ways of combining segmentation and classification.
+The sequential dual-stage approach uses DeepLabV3+ to predict a lesion mask,
+converts it into an ROI, and uses EfficientNet-B0 to classify the cropped lesion.
+
+MTL-OCA instead uses one shared encoder with separate segmentation and
+classification heads. This gave us a choice between a shared multi-task model
+and a modular pipeline of task-specific specialists.
+
+[Transition]
+We therefore first asked: which of these two directions should we improve?
+
+
+SLIDE 18 — WHY WE CHOSE THE DUAL-STAGE PIPELINE
+
+We chose dual-stage for four reasons. It is modular, so both stages can be
+improved independently. It also supports controlled experiments: we can keep
+Stage 2 unchanged, replace only Stage 1, and directly measure the effect of
+better segmentation.
+
+It also reuses our strongest task-specific models and produces an explicit mask
+and ROI, making the decision more interpretable than a class label alone.
+
+For these reasons, we extended and rigorously evaluated the dual-stage pipeline.
+
+
+SLIDE 19 — IMPROVED SEGMENTER
+
+Our first improvement targets Stage 1.
+
+Transfer learning was especially effective in our segmentation baselines, so we
+built a U-Net with an ImageNet-pretrained EfficientNet-B4 encoder. We also tested
+Focal Tversky plus BCE loss to emphasise false negatives.
+
+At inference, TTA averages predictions from original, flipped, and multi-scale
+images. Post-processing then fills small gaps and removes isolated false-positive
+regions. We test each component separately instead of assuming it helps.
+
+
+SLIDE 20 — SEGMENTER ABLATION
+
+[Point to the table and read down the rows.]
+
+The pretrained encoder is the decisive component. It increases Dice from 0.648
+to 0.765, a gain of 0.117, while reducing variability across test images.
+
+Focal Tversky does not improve overall Dice, but it increases pixel recall from
+0.763 to 0.800. Therefore, it mainly changes the precision-recall trade-off.
+
+TTA and post-processing produce no measurable Dice improvement. On small and
+noisy BUSI data, transfer learning contributes far more than additional loss or
+inference complexity.
+
+
+SLIDE 21 — IMPROVED DUAL-STAGE PIPELINE
+
+We then placed the improved segmenter into the dual-stage pipeline. We select the
+largest connected component of its mask, calculate a bounding box, and add a
+fifteen-percent margin to preserve surrounding tissue. This ROI is passed to the
+Stage-2 EfficientNet-B0 classifier.
+
+We first performed a controlled substitution: only Stage 1 was replaced, while the
+ROI coupling and Stage 2 were kept unchanged. This isolated the contribution of
+segmentation quality.
+
+We then strengthened Stage 2 by training on both ground-truth and predicted-mask
+ROIs, and added OOF masks, five-seed ensembling, and bootstrap confidence
+intervals.
+
+
+SLIDE 22 — OOF AND DUAL-STAGE ABLATION
+
+Stage 2 must learn from realistic predicted ROIs. If a segmenter has already seen
+an image, its mask can be unrealistically clean.
+
+With five-fold cross-fitting, each fold receives masks from a segmenter trained
+only on the other four folds. Every training image therefore receives a mask from
+a model that never saw it, reducing the clean-training versus imperfect-testing
+mismatch.
+
+[Point to the three rows.]
+
+We keep the OOF pipeline fixed and change only the Stage-2 input: ROI image alone,
+ROI plus six shape features, or ROI plus radiomics features.
+
+Although the hand-crafted features slightly increase the average single-seed F1,
+they do not improve the final ensemble. Pure CNN and shape features both achieve
+0.875 with the same confidence interval, while radiomics decreases to 0.863.
+
+The hand-crafted features therefore provide no reliable incremental benefit, so
+we retain the simpler pure-CNN configuration.
+
+
+SLIDE 25 — FINAL DUAL-STAGE INTERPRETATION
+
+The dual-stage experiments give us two main conclusions.
+
+First, improving Stage-1 Dice from 0.739 to 0.760 changes the initial pipeline F1
+by only 0.003. The original mask was already sufficient for ROI localisation, so
+the initial bottleneck was the classifier, not the exact mask boundary.
+
+Second, the apparent shape and radiomics gains disappear under multi-seed
+evaluation and confidence intervals. Ensembling raises the pure-CNN per-seed mean
+of 0.847 to 0.875, with a 95-percent confidence interval from 0.80 to 0.94.
+
+Our contribution is therefore a controlled, leakage-aware pipeline that identifies
+which improvements are actually reliable.
+
+
+SHORT Q&A ANSWERS
+
+1. What is TTA?
+TTA means test-time augmentation. We predict the original, flipped, and multi-scale
+versions of the same image, transform the outputs back, and average their probability
+maps. In our ablation, it did not provide a measurable Dice improvement.
+
+2. What is the largest connected component?
+It is the largest continuous foreground region in the predicted binary mask. We
+assume this main region is the lesion and use it to calculate the ROI bounding box,
+while small isolated regions are treated as likely false positives.
+
+3. Why do we need OOF masks?
+OOF prevents the Stage-2 training masks from being generated by a segmenter that has
+already seen the same images. It produces more realistic predicted-mask crops and
+reduces in-fold optimism.
+
+4. Why is pure CNN selected instead of shape or radiomics?
+Pure CNN and shape features have the same final ensemble F1 of 0.875 and identical
+confidence intervals. Radiomics is lower at 0.863. Since the hand-crafted features
+provide no reliable improvement, we select the simpler pure-CNN configuration.
+
+5. Are hand-crafted features useless?
+Not in general. Our conclusion is limited to this dataset and evaluation protocol:
+they provide no reliable additional benefit over the pure-CNN baseline on BUSI.
