@@ -1,0 +1,60 @@
+{
+  "total_images": 780,
+  "per_class": {
+    "benign": 437,
+    "malignant": 210,
+    "normal": 133
+  },
+  "per_class_pct": {
+    "benign": 56.03,
+    "malignant": 26.92,
+    "normal": 17.05
+  },
+  "images_with_mask": 780,
+  "images_without_mask": 0,
+  "multi_mask_images": 17,
+  "multi_mask_by_class": {
+    "benign": 16,
+    "malignant": 1,
+    "normal": 0
+  },
+  "max_masks_per_image": 3,
+  "images_with_lesion": 647,
+  "normal_with_lesion": 0,
+  "width_range": [
+    190,
+    1048
+  ],
+  "height_range": [
+    310,
+    719
+  ],
+  "width_median": 564.0,
+  "height_median": 474.0,
+  "unique_sizes": 639,
+  "area_ratio_median_by_class": {
+    "benign": 0.0379,
+    "malignant": 0.1206
+  },
+  "area_ratio_mean_by_class": {
+    "benign": 0.0688,
+    "malignant": 0.1474
+  },
+  "intensity_mean_by_class": {
+    "benign": 86.28,
+    "malignant": 79.76,
+    "normal": 81.01
+  },
+  "intensity_std_by_class": {
+    "benign": 51.74,
+    "malignant": 52.86,
+    "normal": 48.72
+  },
+  "exact_dup_groups": 1,
+  "exact_dup_images": 2,
+  "near_dup_pairs": 186,
+  "near_dup_pairs_cross_class": 10,
+  "near_dup_clusters": 124,
+  "near_dup_images_involved": 277,
+  "phash_threshold": 5
+}
