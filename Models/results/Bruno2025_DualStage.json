@@ -1,0 +1,188 @@
+{
+  "model": "Dual-stage pipeline: DeepLabV3+ (seg) -> ROI crop -> EfficientNet-B0 (cls)",
+  "paper": "Bruno et al. (2025), Dual-stage framework [17]",
+  "task": "segmentation-guided benign/malignant classification (2-class)",
+  "our_work": "wrote the ROI-extraction coupling (mask bbox -> crop) and the end-to-end pipeline training/eval; reused DeepLabV3+ [07] as Stage-1 and EfficientNet-B0 [06] retrained on ROI crops as Stage-2; shared leakage-free grouped split",
+  "config": {
+    "img_size": 256,
+    "roi_size": 256,
+    "epochs": 30,
+    "batch": 16,
+    "lr": 0.0001,
+    "optimizer": "Adam",
+    "loss": "weighted CrossEntropy",
+    "stage1": "DeepLabV3+ ResNet-50 (reused from [07])",
+    "stage2": "EfficientNet-B0 (ImageNet-pretrained, 2-class head)",
+    "classes": [
+      "benign",
+      "malignant"
+    ],
+    "stage1_checkpoint_reused": true
+  },
+  "split": {
+    "train": 445,
+    "val": 102,
+    "test": 98
+  },
+  "best_val_macro_f1": 0.9196,
+  "train_minutes": 0.97,
+  "test_segmentation": {
+    "n": 98,
+    "dice": {
+      "mean": 0.7392,
+      "std": 0.2903
+    },
+    "iou": {
+      "mean": 0.6523,
+      "std": 0.2907
+    },
+    "pixel_acc": {
+      "mean": 0.9595,
+      "std": 0.0646
+    },
+    "pixel_precision": {
+      "mean": 0.7662,
+      "std": 0.2746
+    },
+    "pixel_recall": {
+      "mean": 0.7531,
+      "std": 0.3066
+    }
+  },
+  "test_classification": {
+    "n": 98,
+    "macro_f1": 0.8043,
+    "balanced_accuracy": 0.8125,
+    "accuracy": 0.8265,
+    "macro_auc_ovr": 0.9061,
+    "per_class": {
+      "benign": {
+        "precision": 0.8906,
+        "recall": 0.8507,
+        "f1": 0.8702,
+        "support": 67
+      },
+      "malignant": {
+        "precision": 0.7059,
+        "recall": 0.7742,
+        "f1": 0.7385,
+        "support": 31
+      }
+    },
+    "confusion_matrix": [
+      [
+        57,
+        10
+      ],
+      [
+        7,
+        24
+      ]
+    ],
+    "class_order": [
+      "benign",
+      "malignant"
+    ]
+  },
+  "test_classification_gt_roi": {
+    "n": 98,
+    "macro_f1": 0.8649,
+    "balanced_accuracy": 0.8844,
+    "accuracy": 0.8776,
+    "macro_auc_ovr": 0.9104,
+    "per_class": {
+      "benign": {
+        "precision": 0.9508,
+        "recall": 0.8657,
+        "f1": 0.9062,
+        "support": 67
+      },
+      "malignant": {
+        "precision": 0.7568,
+        "recall": 0.9032,
+        "f1": 0.8235,
+        "support": 31
+      }
+    },
+    "confusion_matrix": [
+      [
+        58,
+        9
+      ],
+      [
+        3,
+        28
+      ]
+    ],
+    "class_order": [
+      "benign",
+      "malignant"
+    ]
+  },
+  "history": {
+    "train_loss": [
+      0.5914354100823402,
+      0.47608361606087,
+      0.3995201012917927,
+      0.3291845012988363,
+      0.3089132819856916,
+      0.24429643766156264,
+      0.23668524649526393,
+      0.20528772260461534,
+      0.16855081929160015,
+      0.12799118712012256,
+      0.12341259190413569,
+      0.14585335622541606,
+      0.11973168035703045,
+      0.09510460901739341,
+      0.06801346859096416,
+      0.10407599524062659,
+      0.080683702569721,
+      0.06997991310033415,
+      0.09236961327094052,
+      0.07887147579874311,
+      0.08509213527265404,
+      0.05086020052632583,
+      0.08188961083734674,
+      0.04500346690682428,
+      0.06191382999531925,
+      0.08438791377869036,
+      0.07012297598911184,
+      0.03262751930326756,
+      0.03653285622463694,
+      0.05136804893014154
+    ],
+    "val_f1": [
+      0.7552978808476609,
+      0.7624303797468355,
+      0.8303534303534303,
+      0.811266447368421,
+      0.879549114331723,
+      0.8897058823529411,
+      0.879549114331723,
+      0.8676470588235294,
+      0.8926943308007014,
+      0.8912579957356077,
+      0.8515592515592516,
+      0.9196217494089834,
+      0.8983951300498063,
+      0.8656126482213439,
+      0.9073148568832349,
+      0.8555398191524131,
+      0.8983951300498063,
+      0.9089285714285714,
+      0.8282828282828283,
+      0.8656126482213439,
+      0.8595785237742243,
+      0.8676470588235294,
+      0.8163719157047549,
+      0.8983951300498063,
+      0.879549114331723,
+      0.8357487922705313,
+      0.8897058823529411,
+      0.8861607142857143,
+      0.9089285714285714,
+      0.8656126482213439
+    ]
+  }
+}

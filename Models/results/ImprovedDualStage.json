@@ -1,0 +1,193 @@
+{
+  "model": "Improved dual-stage: Improved-UNet (seg) -> ROI crop -> EfficientNet-B0 (cls)",
+  "paper": "Our extension of Bruno et al. (2025) [17] with an improved Stage-1",
+  "task": "segmentation-guided benign/malignant classification (2-class)",
+  "our_work": "swapped Bruno's DeepLabV3+ Stage-1 for our Improved Pretrained-UNet (EfficientNet-B4 + Focal Tversky + TTA + largest-CC); reused the ROI coupling, Stage-2 EfficientNet-B0 classifier, leakage-free split and metrics UNCHANGED from Bruno for a controlled comparison",
+  "config": {
+    "img_size": 256,
+    "roi_size": 256,
+    "epochs": 30,
+    "batch": 16,
+    "lr": 0.0001,
+    "optimizer": "Adam",
+    "loss": "weighted CrossEntropy",
+    "stage1": "Improved Pretrained-UNet (EfficientNet-B4, TTA+postproc, reused)",
+    "stage2": "EfficientNet-B0 (ImageNet-pretrained, 2-class head)",
+    "classes": [
+      "benign",
+      "malignant"
+    ],
+    "stage1_checkpoint_reused": true
+  },
+  "split": {
+    "train": 445,
+    "val": 102,
+    "test": 98
+  },
+  "best_val_macro_f1": 0.9196,
+  "train_minutes": 0.93,
+  "test_segmentation": {
+    "n": 98,
+    "dice": {
+      "mean": 0.7598,
+      "std": 0.3074
+    },
+    "iou": {
+      "mean": 0.6875,
+      "std": 0.305
+    },
+    "pixel_acc": {
+      "mean": 0.9608,
+      "std": 0.067
+    },
+    "pixel_precision": {
+      "mean": 0.7652,
+      "std": 0.3075
+    },
+    "pixel_recall": {
+      "mean": 0.7904,
+      "std": 0.3094
+    }
+  },
+  "test_classification": {
+    "n": 98,
+    "macro_f1": 0.8072,
+    "balanced_accuracy": 0.8211,
+    "accuracy": 0.8265,
+    "macro_auc_ovr": 0.896,
+    "per_class": {
+      "benign": {
+        "precision": 0.9032,
+        "recall": 0.8358,
+        "f1": 0.8682,
+        "support": 67
+      },
+      "malignant": {
+        "precision": 0.6944,
+        "recall": 0.8065,
+        "f1": 0.7463,
+        "support": 31
+      }
+    },
+    "confusion_matrix": [
+      [
+        56,
+        11
+      ],
+      [
+        6,
+        25
+      ]
+    ],
+    "class_order": [
+      "benign",
+      "malignant"
+    ]
+  },
+  "test_classification_gt_roi": {
+    "n": 98,
+    "macro_f1": 0.884,
+    "balanced_accuracy": 0.8907,
+    "accuracy": 0.898,
+    "macro_auc_ovr": 0.923,
+    "per_class": {
+      "benign": {
+        "precision": 0.9385,
+        "recall": 0.9104,
+        "f1": 0.9242,
+        "support": 67
+      },
+      "malignant": {
+        "precision": 0.8182,
+        "recall": 0.871,
+        "f1": 0.8438,
+        "support": 31
+      }
+    },
+    "confusion_matrix": [
+      [
+        61,
+        6
+      ],
+      [
+        4,
+        27
+      ]
+    ],
+    "class_order": [
+      "benign",
+      "malignant"
+    ]
+  },
+  "history": {
+    "train_loss": [
+      0.5524468890258244,
+      0.4366365990468434,
+      0.36725301082645145,
+      0.3233260304800102,
+      0.269681931872453,
+      0.2330943662673235,
+      0.1948022640177182,
+      0.18961023153471096,
+      0.1953960679737585,
+      0.15904321361865317,
+      0.1475262926625354,
+      0.09421871303181563,
+      0.09311042193855558,
+      0.08823079243302345,
+      0.06946687779522367,
+      0.09627176724773433,
+      0.10047402272799186,
+      0.06358681698994977,
+      0.06061764596961439,
+      0.05521168694498816,
+      0.042270842174600275,
+      0.07596953552482384,
+      0.10736275338734101,
+      0.030432485692602183,
+      0.05618968165280031,
+      0.06710323328817529,
+      0.05935635141629193,
+      0.05296573116876451,
+      0.04162642134802549,
+      0.04630710479770122
+    ],
+    "val_f1": [
+      0.8037468354430379,
+      0.7737903225806452,
+      0.8576489533011272,
+      0.8357487922705313,
+      0.8695095948827292,
+      0.8811818278089589,
+      0.8999891055670552,
+      0.8226812557521219,
+      0.8379752197394895,
+      0.8897058823529411,
+      0.8897058823529411,
+      0.8695095948827292,
+      0.8633928571428571,
+      0.9073148568832349,
+      0.8695095948827292,
+      0.9014492753623189,
+      0.8712121212121212,
+      0.8811818278089589,
+      0.8983951300498063,
+      0.8880105401844532,
+      0.8999891055670552,
+      0.879549114331723,
+      0.9027851318436937,
+      0.9014492753623189,
+      0.8777644623597342,
+      0.8897058823529411,
+      0.8226812557521219,
+      0.8826728014221479,
+      0.9196217494089834,
+      0.8983951300498063
+    ]
+  },
+  "baseline_bruno": {
+    "stage1": "DeepLabV3+ Dice 0.739",
+    "pipeline_macro_f1": 0.804,
+    "gt_roi_macro_f1": 0.865
+  }
+}
